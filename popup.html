@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eBay Photo Extractor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📸 eBay Photo Extractor</h1>
+    </div>
+    
+    <div class="content">
+      <div id="status" class="status">
+        <p>Ready to extract images from eBay listing</p>
+      </div>
+      
+      <div id="imageCount" class="image-count">
+        <span class="count-label">Images found:</span>
+        <span id="count" class="count-number">-</span>
+      </div>
+      
+      <button id="extractBtn" class="btn btn-primary">
+        <span class="btn-icon">⬇️</span>
+        Extract & Download Photos
+      </button>
+      
+      <div id="progress" class="progress-container" style="display: none;">
+        <div class="progress-bar">
+          <div id="progressBar" class="progress-fill"></div>
+        </div>
+        <p id="progressText" class="progress-text">Downloading...</p>
+      </div>
+      
+      <div id="error" class="error" style="display: none;"></div>
+      <div id="success" class="success" style="display: none;"></div>
+    </div>
+    
+    <div class="footer">
+      <p class="help-text">Open an eBay listing page and click the button above</p>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

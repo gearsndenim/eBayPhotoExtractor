@@ -1,0 +1,41 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- eBay brand colors -->
+    <style>
+      .ebay-blue { fill: #0064D2; }
+      .ebay-green { fill: #86B817; }
+      .ebay-yellow { fill: #F5AF02; }
+      .ebay-red { fill: #E53238; }
+      .white { fill: white; }
+      .white-trans { fill: rgba(255, 255, 255, 0.4); }
+    </style>
+  </defs>
+  
+  <!-- Background circle - eBay Blue -->
+  <circle cx="64" cy="64" r="59" class="ebay-blue"/>
+  
+  <!-- Back photo (offset, semi-transparent) -->
+  <rect x="20" y="20" width="38" height="38" rx="3" class="white-trans"/>
+  
+  <!-- Front photo (main white frame) -->
+  <rect x="30" y="30" width="38" height="38" rx="3" class="white"/>
+  
+  <!-- Mountain landscape inside photo -->
+  <!-- Left mountain (blue) -->
+  <polygon points="34,60 45,45 52,60" class="ebay-blue"/>
+  
+  <!-- Right mountain (green) -->
+  <polygon points="47,60 56,48 64,60" class="ebay-green"/>
+  
+  <!-- Sun (yellow circle) -->
+  <circle cx="58" cy="39" r="4" class="ebay-yellow"/>
+  
+  <!-- Download arrow badge (bottom right) -->
+  <circle cx="63" cy="63" r="9" class="ebay-red"/>
+  
+  <!-- Arrow shaft -->
+  <rect x="62" y="58" width="2" height="5" class="white"/>
+  
+  <!-- Arrow head -->
+  <polygon points="60,62 64,65 68,62" class="white"/>
+</svg>
