@@ -108,7 +108,7 @@ chrome.commands.onCommand.addListener(async (command) => {
       const images = response.images;
       console.log(`Found ${images.length} images to download`);
       
-      // Get the listing title for folder name
+      // Get the listing title for filename
       let sanitizedTitle = 'eBay-Listing';
       try {
         const titleElement = await chrome.scripting.executeScript({
@@ -143,7 +143,7 @@ chrome.commands.onCommand.addListener(async (command) => {
         console.log('Could not get title, using default:', e);
       }
       
-      // Add timestamp to folder name (at the start)
+      // Create timestamp for each image
       const now = new Date();
       const timestamp = now.getFullYear() +
         String(now.getMonth() + 1).padStart(2, '0') +
@@ -152,14 +152,13 @@ chrome.commands.onCommand.addListener(async (command) => {
         String(now.getMinutes()).padStart(2, '0') +
         String(now.getSeconds()).padStart(2, '0');
       
-      sanitizedTitle = `${timestamp}-${sanitizedTitle}`;
-      
-      // Download all images in order
+      // Download all images in order with timestamp and item name
       for (let i = 0; i < images.length; i++) {
         const image = images[i];
         const urlParts = image.url.split('.');
         const extension = urlParts[urlParts.length - 1].split('?')[0] || 'jpg';
-        const filename = `${sanitizedTitle}/image-${String(i + 1).padStart(2, '0')}.${extension}`;
+        // Format: eBayPhotos/TIMESTAMP-ItemName-01.jpg
+        const filename = `eBayPhotos/${timestamp}-${sanitizedTitle}-${String(i + 1).padStart(2, '0')}.${extension}`;
         
         try {
           await chrome.downloads.download({

@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       statusDiv.style.background = '#e8f5e9';
       statusDiv.style.borderColor = '#4caf50';
       
-      // Get the listing title for folder name
+      // Get the listing title for filename
       let sanitizedTitle = 'eBay-Listing';
       try {
         // Get title from page
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('Could not get title, using default:', e);
       }
       
-      // Add timestamp to folder name (at the start)
+      // Create timestamp for each image
       const now = new Date();
       const timestamp = now.getFullYear() +
         String(now.getMonth() + 1).padStart(2, '0') +
@@ -106,8 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         String(now.getHours()).padStart(2, '0') +
         String(now.getMinutes()).padStart(2, '0') +
         String(now.getSeconds()).padStart(2, '0');
-      
-      sanitizedTitle = `${timestamp}-${sanitizedTitle}`;
       
       progressText.textContent = 'Starting downloads...';
       
@@ -126,8 +124,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const urlParts = image.url.split('.');
         const extension = urlParts[urlParts.length - 1].split('?')[0] || 'jpg';
         
-        // Use padded numbers for proper file sorting (01, 02, 03, etc.)
-        const filename = `${sanitizedTitle}/image-${String(i + 1).padStart(2, '0')}.${extension}`;
+        // Format: eBayPhotos/TIMESTAMP-ItemName-01.jpg
+        const filename = `eBayPhotos/${timestamp}-${sanitizedTitle}-${String(i + 1).padStart(2, '0')}.${extension}`;
         
         try {
           await chrome.downloads.download({
