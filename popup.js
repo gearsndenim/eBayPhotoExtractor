@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('Could not get title, using default:', e);
       }
       
-      // Add timestamp to folder name
+      // Add timestamp to folder name (at the start)
       const now = new Date();
       const timestamp = now.getFullYear() +
         String(now.getMonth() + 1).padStart(2, '0') +
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         String(now.getMinutes()).padStart(2, '0') +
         String(now.getSeconds()).padStart(2, '0');
       
-      sanitizedTitle = `${sanitizedTitle}-${timestamp}`;
+      sanitizedTitle = `${timestamp}-${sanitizedTitle}`;
       
       progressText.textContent = 'Starting downloads...';
       
@@ -140,8 +140,9 @@ document.addEventListener('DOMContentLoaded', async () => {
           console.error('Download error for image:', image.url, downloadError);
         }
         
-        // Small delay to avoid overwhelming the browser and maintain order
-        await new Promise(resolve => setTimeout(resolve, 150));
+        // Random delay between downloads (250-500ms) to avoid triggering eBay bot protection
+        const randomDelay = 250 + Math.random() * 250;
+        await new Promise(resolve => setTimeout(resolve, randomDelay));
       }
       
       // Show success message

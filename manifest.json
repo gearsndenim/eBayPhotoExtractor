@@ -7,8 +7,18 @@
     "activeTab",
     "downloads",
     "scripting",
-    "contextMenus"
+    "contextMenus",
+    "notifications"
   ],
+  "commands": {
+    "extract-images": {
+      "suggested_key": {
+        "default": "Ctrl+Comma",
+        "mac": "Command+Comma"
+      },
+      "description": "Extract and download eBay listing images"
+    }
+  },
   "host_permissions": [
     "https://*.ebay.com/*",
     "https://*.ebay.co.uk/*",
